@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "zendrive"
   spec.version       = Zendrive::VERSION
   spec.authors       = ["Jorge Valdivia"]
-  spec.email         = ["jvaldivia@rarestep.com"]
+  spec.email         = ["jvaldivia@fleetio.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{Wrapper for the Zendrive API.}
+  spec.description   = %q{Provides methods to interact with the Zendrive analytics API.}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
@@ -28,4 +28,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.9"
   spec.add_development_dependency "rake", "~> 10.0"
+
+  spec.add_dependency "rest-client"
 end
