@@ -1,28 +1,46 @@
 # Zendrive
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/zendrive`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Zendrive is a wrapper for the Zendrive Analytics API. More info about the Zendrive Analytics API can be found here at [http://docs.zendrive.com/en/latest/api/index.html](http://docs.zendrive.com/en/latest/api/index.html)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'zendrive'
+gem 'zendrive', git: "git://github.com/rarestep/zendrive.git"
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install zendrive
-
 ## Usage
 
-TODO: Write usage instructions here
+Setup your API key in an initializer.
+```
+# config/initializers/zendrive.rb
+Zendrive.configure do |config|
+  config.api_key = 'YOUR_API_KEY'
+end
+```
+
+Or inline:
+```
+Zendrive.api_key = 'YOUR_API_KEY'
+```
+
+Start using it!
+```
+# Get all drivers
+Zendrive::Driver.all
+
+# Get trips for a driver
+driver = Zendrive::Driver.all.first
+driver.trips
+
+# Delete a trip Zendrive::Trip.delete(<driver_id>, <trip_id>)
+Zendrive::Trip.delete(123, 456789)
+```
 
 ## Development
 
