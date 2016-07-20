@@ -1,5 +1,7 @@
 require "zendrive/version"
+require "zendrive/configuration"
+require "zendrive/driver"
 
 module Zendrive
-  # Your code goes here...
+  extend Configuration
 end
