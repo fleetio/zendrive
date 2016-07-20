@@ -1,6 +1,7 @@
 module Zendrive
   class Driver < Findable
-    ENDPOINT = "drivers"
+    INDEX_ENDPOINT = "drivers"
+    SINGLE_ENDPOINT = "driver"
     RESOURCE_NAME = "drivers"
 
     attr_reader :id, :driver_id, :info, :rank, :score, :recommendation
