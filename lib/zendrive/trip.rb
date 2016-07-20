@@ -14,8 +14,13 @@ module Zendrive
     end
 
     def self.delete(driver_id, trip_id)
-      puts "\n******* #{url_for(self::SINGLE_ENDPOINT, {driver_id: driver_id, trip_id: trip_id})}"
-      RestClient.delete(url_for(self::SINGLE_ENDPOINT, {driver_id: driver_id, trip_id: trip_id}), default_params)
+      begin
+        response = RestClient.delete(url_for(self::SINGLE_ENDPOINT, {driver_id: driver_id, trip_id: trip_id}), default_params)
+      rescue => e
+        response = e.response
+      end
+
+      response.code == 200
     end
   end
 end
