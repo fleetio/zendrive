@@ -32,14 +32,15 @@ Zendrive.api_key = 'YOUR_API_KEY'
 Start using it!
 ```
 # Get all drivers
-Zendrive::Driver.all
+$ Zendrive::Driver.all
 
 # Get trips for a driver
-driver = Zendrive::Driver.all.first
-driver.trips
+$ driver = Zendrive::Driver.all.first
+$ driver.trips
 
-# Delete a trip Zendrive::Trip.delete(<driver_id>, <trip_id>)
-Zendrive::Trip.delete(123, 456789)
+# Delete a trip
+# Zendrive::Trip.delete(<driver_id>, <trip_id>)
+$ Zendrive::Trip.delete(123, 456789)
 ```
 
 ## Development
