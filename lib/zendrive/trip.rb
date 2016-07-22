@@ -4,13 +4,30 @@ module Zendrive
     SINGLE_ENDPOINT = "driver/{driver_id}/trip/{trip_id}"
     RESOURCE_NAME = "trips"
 
-    attr_reader :id, :trip_id, :info, :score
+    attr_reader :id, :trip_id, :info, :score, :simple_path, :events
 
     def initialize(attributes)
-      @id = attributes["driver_id"]
+      puts attributes
+      @id = attributes["trip_id"]
       @trip_id = attributes["trip_id"]
-      @info = Util::DeepStruct.new(attributes["info"])
-      @score = Util::DeepStruct.new(attributes["score"])
+
+      @info = Util::DeepStruct.new(attributes["info"]) if attributes["info"] && attributes["info"].any?
+      @score = Util::DeepStruct.new(attributes["score"]) if attributes["score"] && attributes["score"].any?
+
+      @simple_path = attributes["simple_path"]
+      @events = attributes["events"]
+    end
+
+    def self.find(driver_id, trip_id)
+      params = default_params.dup
+      params[:params].merge!({fields: "info,score,simple_path,events"})
+
+      response = RestClient.get(
+        url_for(self::SINGLE_ENDPOINT, {driver_id: driver_id, trip_id: trip_id}),
+        params
+      )
+
+      new(JSON.parse(response.body))
     end
 
     def self.delete(driver_id, trip_id)
