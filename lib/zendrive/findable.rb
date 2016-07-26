@@ -27,13 +27,14 @@ module Zendrive
     # Replace any parameters that need to be interpolated.
     # Ex: /driver/{driver_id}/trips -> /driver/123/trips
     def self.interpolated_endpoint(endpoint, params)
+      local_endpoint = endpoint.dup
       if params
         params.each do |name, value|
-          endpoint.gsub!("{#{name}}", "#{value}")
+          local_endpoint.gsub!("{#{name}}", "#{value}")
         end
       end
 
-      endpoint
+      local_endpoint
     end
   end
 end

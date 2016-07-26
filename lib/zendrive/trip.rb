@@ -7,7 +7,6 @@ module Zendrive
     attr_reader :id, :trip_id, :info, :score, :simple_path, :events
 
     def initialize(attributes)
-      puts attributes
       @id = attributes["trip_id"]
       @trip_id = attributes["trip_id"]
 
