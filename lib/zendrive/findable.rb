@@ -20,7 +20,7 @@ module Zendrive
       {
         accept: :json,
         content_type: :json,
-        params: { apikey: Zendrive.api_key }
+        params: { apikey: Zendrive.api_key, limit: 50, start_date: "2000-01-01", end_date: Date.today.to_s }
       }
     end
 
