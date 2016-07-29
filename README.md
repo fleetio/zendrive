@@ -38,6 +38,10 @@ $ Zendrive::Driver.all
 $ driver = Zendrive::Driver.all.first
 $ driver.trips
 
+# Find a specific trip
+# Zendrive::Trip.find(<driver_id>, <trip_id>)
+$ Zendrive::Trip.trip(123, 456789)
+
 # Delete a trip
 # Zendrive::Trip.delete(<driver_id>, <trip_id>)
 $ Zendrive::Trip.delete(123, 456789)
