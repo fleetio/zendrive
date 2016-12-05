@@ -18,5 +18,9 @@ module Zendrive
     def trips
       Trip.all(driver_id: id)
     end
+
+    def score(params = {})
+      Score.find(@id, params)
+    end
   end
 end
