@@ -4,8 +4,11 @@ module Zendrive
     SINGLE_ENDPOINT = nil
     RESOURCE_NAME = nil
 
-    def self.all(interpolated_params = nil)
-      response = RestClient.get(url_for(self::INDEX_ENDPOINT, interpolated_params), default_params)
+    def self.all(interpolated_params = nil, query_params = {})
+      params = default_params.dup
+      params[:params].merge!(query_params)
+
+      response = RestClient.get(url_for(self::INDEX_ENDPOINT, interpolated_params), params)
       records = JSON.parse(response.body)[self::RESOURCE_NAME]
       records.map { |attributes| new(attributes) }
     end

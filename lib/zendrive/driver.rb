@@ -26,8 +26,8 @@ module Zendrive
       end
     end
 
-    def trips
-      Trip.all(driver_id: id)
+    def trips(params = {})
+      Trip.all({driver_id: id}, params)
     end
 
     def score(params = {})
