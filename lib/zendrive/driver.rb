@@ -4,14 +4,20 @@ module Zendrive
     SINGLE_ENDPOINT = "driver"
     RESOURCE_NAME = "drivers"
 
-    attr_reader :id, :driver_id, :info, :rank, :score, :recommendation
+    attr_reader :id, :driver_id, :info, :rank, :score, :recommendation,
+                :driving_behavior
 
     def initialize(attributes)
       @id = attributes["driver_id"]
       @driver_id = attributes["driver_id"]
       @info = Util::DeepStruct.new(attributes["info"])
       @rank = attributes["rank"]
-      @score = Util::DeepStruct.new(attributes["score"])
+      if Zendrive.api_version == "v2"
+        @score = Util::DeepStruct.new(attributes["score"])
+      elsif Zendrive.api_version == "v3"
+        @driving_behavior = Util::DeepStruct.new(attributes["driving_behavior"])
+      end
+
       @recommendation = attributes["recommendation"]
     end
 
@@ -28,10 +34,6 @@ module Zendrive
 
     def trips(params = {})
       Trip.all({driver_id: id}, params)
-    end
-
-    def score(params = {})
-      Score.find(@id, params)
     end
   end
 end
