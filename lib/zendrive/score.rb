@@ -40,7 +40,7 @@ module Zendrive
         if Zendrive.api_version == "v2"
           attributes["info"]["drive_time_in_seconds"] = convert_drive_hours_to_seconds(attributes["info"]["drive_time_hours"])
         elsif Zendrive.api_version == "v3"
-          attributes["info"]["drive_time_in_seconds"] = convert_drive_hours_to_seconds(attributes["info"]["duration_seconds"])
+          attributes["info"]["drive_time_in_seconds"] = attributes["info"]["duration_seconds"]
         end
       end
 
