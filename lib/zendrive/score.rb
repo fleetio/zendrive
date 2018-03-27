@@ -56,11 +56,11 @@ module Zendrive
       end
     end
 
-    def v2_fields
+    def self.v2_fields
       "info,score,score_statistics"
     end
 
-    def v3_fields
+    def self.v3_fields
       "info,driving_behavior"
     end
   end
