@@ -23,8 +23,8 @@ module Zendrive
 
     def self.find(driver_id, params)
       req_params = default_params.dup
-      req_params[:params].merge!(params)
       req_params[:params].merge!(fields: send("#{Zendrive.api_version}_fields"))
+      req_params[:params].merge!(params)
 
       response = RestClient.get(url_for(self::SINGLE_ENDPOINT, {driver_id: driver_id}), req_params)
 
