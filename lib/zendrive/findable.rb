@@ -15,7 +15,7 @@ module Zendrive
 
     # Combine the top level API endpoint with the version and the resource specific endpoint
     def self.url_for(endpoint, interpolated_params)
-      [Zendrive.endpoint, Zendrive.api_version, (interpolated_endpoint(endpoint, interpolated_params))].join("/")
+      [Zendrive.endpoint, "v3", (interpolated_endpoint(endpoint, interpolated_params))].join("/")
     end
 
     # Required on all API calls
