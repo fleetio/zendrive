@@ -3,8 +3,7 @@ module Zendrive
     SINGLE_ENDPOINT = "driver/{driver_id}/score"
     RESOURCE_NAME = "score"
 
-    attr_reader :info, :score, :score_statistics, :start_date, :end_date,
-                :driving_behavior
+    attr_reader :info, :start_date, :end_date, :driving_behavior
 
     def initialize(attributes)
       attributes = format_attrs(attributes)

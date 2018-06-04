@@ -4,8 +4,7 @@ module Zendrive
     SINGLE_ENDPOINT = "driver/{driver_id}/trip/{trip_id}"
     RESOURCE_NAME = "trips"
 
-    attr_reader :id, :trip_id, :info, :score, :simple_path, :events,
-                :speed_profile, :driving_behavior
+    attr_reader :id, :trip_id, :info, :simple_path, :events, :speed_profile, :driving_behavior
 
     def initialize(attributes)
       @id = attributes["trip_id"]
