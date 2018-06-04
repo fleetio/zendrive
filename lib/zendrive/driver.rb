@@ -12,11 +12,7 @@ module Zendrive
       @driver_id = attributes["driver_id"]
       @info = Util::DeepStruct.new(attributes["info"])
       @rank = attributes["rank"]
-      if Zendrive.api_version == "v2"
-        @score = Util::DeepStruct.new(attributes["score"])
-      elsif Zendrive.api_version == "v3"
-        @driving_behavior = Util::DeepStruct.new(attributes["driving_behavior"])
-      end
+      @driving_behavior = Util::DeepStruct.new(attributes["driving_behavior"])
 
       @recommendation = attributes["recommendation"]
     end
