@@ -35,14 +35,5 @@ module Zendrive
 
       attributes
     end
-
-    def convert_drive_hours_to_seconds(hours_string)
-      if hours_string
-        hours, minutes = hours_string.split(":").map(&:to_i)
-        (hours * 3600) + (minutes * 60)
-      else
-        0
-      end
-    end
   end
 end
